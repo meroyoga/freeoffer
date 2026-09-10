@@ -1,1 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<title>Gratitude Prompt Guide</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   COLOURS
+========================================================= */
+
+:root {
+  --plum: #614051;
+  --plum-mid: #6e4a5e;
+  --plum-light: #7a5470;
+
+  --mauve: #b28f8f;
+  --mauve-light: #c4a8a8;
+  --mauve-pale: rgba(178,143,143,0.12);
+  --mauve-border: rgba(178,143,143,0.30);
+
+  --cream: #f2ebe2;
+  --white: #ffffff;
+
+  --text: #4a3840;
+  --text-light: #7a6068;
+  --muted: #9e8282;
+
+  --border: #e0d5cc;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+button,
+a {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page {
+  display: none;
+  min-height: 100vh;
+}
+
+.page.active {
+  display: block;
+}
+
+
+/* =========================================================
+   PAGE 1 — WELCOME
+========================================================= */
+
+#welcomePage {
+  min-height: 100vh;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(196,168,168,0.18),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #614051 0%,
+      #6e4a5e 50%,
+      #59404e 100%
+    );
+}
+
+#welcomePage.active {
+  display: flex;
+}
+
+
+/* subtle background shapes */
+
+#welcomePage::before {
+  content: "";
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  background: rgba(196,168,168,0.07);
+
+  top: -220px;
+  right: -180px;
+}
+
+#welcomePage::after {
+  content: "";
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.035);
+
+  bottom: -220px;
+  left: -150px;
+}
+
+
+.welcomeContent {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 760px;
+
+  text-align: center;
+
+  color: var(--white);
+}
+
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 16px;
+
+  border: 1px solid rgba(196,168,168,0.45);
+  border-radius: 50px;
+
+  background: rgba(255,255,255,0.05);
+
+  color: var(--mauve-light);
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  margin-bottom: 25px;
+}
+
+
+.welcomeTitle {
+  margin: 0 auto;
+
+  max-width: 700px;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+
+.welcomeSubtitle {
+  max-width: 610px;
+
+  margin: 22px auto 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.35;
+
+  color: #eadedb;
+}
+
+
+.welcomeText {
+  max-width: 580px;
+
+  margin: 25px auto 35px;
+
+  color: rgba(255,255,255,0.78);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+.welcomeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 245px;
+
+  padding: 16px 28px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: var(--mauve);
+  color: var(--white);
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.16),
+    0 0 0 rgba(196,168,168,0);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.welcomeButton:hover {
+  transform: translateY(-3px);
+
+  background: var(--mauve-light);
+
+  box-shadow:
+    0 14px 35px rgba(0,0,0,0.20),
+    0 0 35px rgba(196,168,168,0.22);
+}
+
+
+.welcomeSmall {
+  margin-top: 22px;
+
+  color: rgba(255,255,255,0.48);
+
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   PAGE 2
+========================================================= */
+
+#promptPage {
+  background: var(--cream);
+}
+
+
+/* =========================================================
+   TOP HERO / GENERATOR
+========================================================= */
+
+.promptHero {
+
+  position: relative;
+
+  min-height: 720px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 90px 20px;
+
+  background:
+    linear-gradient(
+      rgba(76,49,63,0.78),
+      rgba(76,49,63,0.82)
+    ),
+    url("YOUR_PROMPT_BACKGROUND_IMAGE_URL_HERE");
+
+  background-size: cover;
+  background-position: center;
+
+  color: var(--white);
+
+  overflow: hidden;
+}
+
+
+/* subtle glow */
+
+.promptHero::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(196,168,168,0.13),
+      transparent 68%
+    );
+
+  pointer-events: none;
+}
+
+
+.generator {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 720px;
+
+  text-align: center;
+}
+
+
+.generatorEyebrow {
+
+  color: var(--mauve-light);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+
+  margin-bottom: 20px;
+}
+
+
+.generatorTitle {
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(38px, 6vw, 62px);
+
+  line-height: 1.1;
+
+  font-weight: 600;
+}
+
+
+.generatorIntro {
+
+  max-width: 570px;
+
+  margin: 20px auto 35px;
+
+  color: rgba(255,255,255,0.76);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   PROMPT BOX
+========================================================= */
+
+.promptBox {
+
+  min-height: 245px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 45px 40px;
+
+  border: 1px solid rgba(196,168,168,0.35);
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.075);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.12);
+
+  margin-bottom: 28px;
+}
+
+
+.promptText {
+
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(28px, 4vw, 39px);
+
+  line-height: 1.3;
+
+  font-style: italic;
+
+  color: var(--white);
+}
+
+
+/*
+   Empty state
+*/
+
+.promptBox.empty {
+
+  border-style: dashed;
+
+  background: rgba(255,255,255,0.035);
+}
+
+
+.promptEmptyText {
+
+  margin: 0;
+
+  color: rgba(255,255,255,0.52);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 25px;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   GENERATOR BUTTONS
+========================================================= */
+
+.generatorButton {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 245px;
+
+  padding: 15px 26px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  background: var(--mauve);
+
+  color: var(--white);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.3px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.generatorButton:hover {
+
+  transform: translateY(-2px);
+
+  background: var(--mauve-light);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+
+.anotherButton {
+
+  display: none;
+
+  margin: 18px auto 0;
+
+  background: transparent;
+
+  border: 1px solid rgba(196,168,168,0.45);
+
+  color: #eadedb;
+
+  padding: 11px 21px;
+
+  border-radius: 50px;
+
+  font-size: 12px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.anotherButton:hover {
+
+  background: rgba(255,255,255,0.07);
+
+  border-color: var(--mauve-light);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PROMPT ANIMATION
+========================================================= */
+
+.promptText.show {
+
+  animation: promptReveal 0.45s ease both;
+}
+
+
+@keyframes promptReveal {
+
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   CONTENT SECTIONS
+========================================================= */
+
+.contentSection {
+
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  padding: 90px 20px;
+}
+
+
+.sectionEyebrow {
+
+  display: block;
+
+  margin-bottom: 15px;
+
+  color: var(--mauve);
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.sectionTitle {
+
+  margin: 0 0 18px;
+
+  color: var(--plum);
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(32px, 5vw, 48px);
+
+  line-height: 1.15;
+
+  font-weight: 600;
+}
+
+
+.sectionText {
+
+  margin: 0 0 18px;
+
+  color: var(--text-light);
+
+  font-size: 15px;
+
+  line-height: 1.85;
+}
+
+
+/* =========================================================
+   APP CTA
+========================================================= */
+
+.appSection {
+
+  padding: 90px 20px;
+
+  background: var(--white);
+}
+
+
+.appCard {
+
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  padding: 55px 45px;
+
+  border-radius: 24px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--plum),
+      var(--plum-mid)
+    );
+
+  color: var(--white);
+
+  border-top: 4px solid var(--mauve);
+
+  box-shadow: 0 20px 55px rgba(97,64,81,0.15);
+}
+
+
+.appEyebrow {
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-style: italic;
+
+  font-size: 21px;
+
+  color: var(--mauve-light);
+
+  margin-bottom: 12px;
+}
+
+
+.appTitle {
+
+  margin: 0 0 20px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(31px, 5vw, 46px);
+
+  line-height: 1.15;
+}
+
+
+.appText {
+
+  max-width: 570px;
+
+  margin: 0 auto 28px;
+
+  color: rgba(255,255,255,0.77);
+
+  font-size: 14px;
+
+  line-height: 1.85;
+}
+
+
+.appHighlight {
+
+  margin: 28px auto;
+
+  padding: 20px 22px;
+
+  border: 1px solid rgba(196,168,168,0.25);
+
+  border-radius: 15px;
+
+  background: rgba(255,255,255,0.05);
+
+  color: #eadedb;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 23px;
+
+  line-height: 1.4;
+
+  font-style: italic;
+}
+
+
+.ctaButton {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 28px;
+
+  min-width: 230px;
+
+  border-radius: 50px;
+
+  background: var(--mauve);
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.ctaButton:hover {
+
+  transform: translateY(-2px);
+
+  background: var(--mauve-light);
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+}
+
+
+/* =========================================================
+   WHO AM I
+========================================================= */
+
+.aboutSection {
+
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 100px 20px;
+}
+
+
+.aboutGrid {
+
+  display: grid;
+
+  grid-template-columns: 0.85fr 1.15fr;
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+
+.aboutImage {
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  border-radius: 22px;
+
+  background: #d7c7c4;
+
+  box-shadow: 0 18px 45px rgba(97,64,81,0.12);
+}
+
+
+.aboutContent {
+
+  padding-right: 10px;
+}
+
+
+.aboutName {
+
+  margin: 0 0 18px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(32px, 5vw, 46px);
+
+  line-height: 1.15;
+
+  color: var(--plum);
+}
+
+
+.aboutText {
+
+  margin: 0 0 17px;
+
+  color: var(--text-light);
+
+  font-size: 14px;
+
+  line-height: 1.85;
+}
+
+
+.aboutClosing {
+
+  margin-top: 24px;
+
+  padding-left: 20px;
+
+  border-left: 2px solid var(--mauve);
+
+  color: var(--plum);
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 23px;
+
+  line-height: 1.45;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.finalSection {
+
+  padding: 90px 20px 100px;
+
+  background: var(--white);
+
+  text-align: center;
+}
+
+
+.finalInner {
+
+  max-width: 650px;
+
+  margin: 0 auto;
+}
+
+
+.finalTitle {
+
+  margin: 0 0 18px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(34px, 5vw, 50px);
+
+  line-height: 1.15;
+
+  color: var(--plum);
+}
+
+
+.finalText {
+
+  margin: 0 auto 30px;
+
+  max-width: 550px;
+
+  color: var(--text-light);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+.finalSmall {
+
+  margin-top: 17px;
+
+  color: var(--muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+  padding: 30px 20px;
+
+  background: var(--plum);
+
+  text-align: center;
+
+  color: rgba(255,255,255,0.5);
+
+  font-size: 11px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .promptHero {
+    min-height: 680px;
+    padding: 70px 18px;
+  }
+
+  .promptBox {
+    min-height: 250px;
+    padding: 35px 24px;
+  }
+
+  .contentSection {
+    padding: 70px 20px;
+  }
+
+  .appSection {
+    padding: 70px 18px;
+  }
+
+  .appCard {
+    padding: 45px 24px;
+  }
+
+  .aboutSection {
+    padding: 75px 20px;
+  }
+
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .aboutImage {
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  .aboutContent {
+    padding: 0;
+  }
+
+}
+
+
+@media (max-width: 540px) {
+
+  #welcomePage {
+    padding: 30px 18px;
+  }
+
+  .welcomeText {
+    font-size: 14px;
+  }
+
+  .welcomeButton,
+  .generatorButton,
+  .ctaButton {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .promptHero {
+    min-height: 650px;
+  }
+
+  .promptBox {
+    border-radius: 18px;
+  }
+
+  .promptText {
+    font-size: 28px;
+  }
+
+  .appHighlight {
+    font-size: 21px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+
+  outline: 3px solid rgba(196,168,168,0.75);
+
+  outline-offset: 4px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     PAGE 1 — WELCOME
+======================================================= -->
+
+<section id="welcomePage" class="page active">
+
+  <div class="welcomeContent">
+
+    <div class="eyebrow">
+      A little gratitude goes a long way
+    </div>
+
+    <h1 class="welcomeTitle">
+      Find something to be grateful for
+    </h1>
+
+    <div class="welcomeSubtitle">
+      A simple moment of reflection can change what you notice.
+    </div>
+
+    <p class="welcomeText">
+      Gratitude doesn't have to be complicated, forced or reserved
+      for the big things in life. Sometimes it begins with noticing
+      something small that was already there.
+    </p>
+
+    <button
+      class="welcomeButton"
+      onclick="openPromptPage()"
+    >
+      Give me a gratitude prompt
+    </button>
+
+    <div class="welcomeSmall">
+      Take a moment. Notice what comes up.
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PAGE 2
+======================================================= -->
+
+<section id="promptPage" class="page">
+
+
+  <!-- =====================================================
+       PROMPT GENERATOR
+  ====================================================== -->
+
+  <section class="promptHero">
+
+    <div class="generator">
+
+      <div class="generatorEyebrow">
+        Your gratitude moment
+      </div>
+
+      <h2 class="generatorTitle">
+        What can you appreciate today?
+      </h2>
+
+      <p class="generatorIntro">
+        There is no right answer here. Let the prompt bring
+        something to mind, then give yourself a moment to
+        actually notice it.
+      </p>
+
+
+      <!-- Prompt starts EMPTY -->
+
+      <div
+        id="promptBox"
+        class="promptBox empty"
+      >
+
+        <p
+          id="emptyPrompt"
+          class="promptEmptyText"
+        >
+          Your prompt is waiting for you.
+        </p>
+
+        <p
+          id="promptText"
+          class="promptText"
+          style="display:none;"
+        ></p>
+
+      </div>
+
+
+      <!-- First button -->
+
+      <button
+        id="generateButton"
+        class="generatorButton"
+        onclick="showPrompt()"
+      >
+        Give me a gratitude prompt
+      </button>
+
+
+      <!-- Second button appears after first prompt -->
+
+      <button
+        id="anotherButton"
+        class="anotherButton"
+        onclick="showAnotherPrompt()"
+      >
+        Another gratitude prompt ↻
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       APP SECTION
+  ====================================================== -->
+
+  <section class="appSection">
+
+    <div class="appCard">
+
+      <div class="appEyebrow">
+        And this is only the beginning...
+      </div>
+
+      <h2 class="appTitle">
+        Imagine having gratitude support whenever you need it.
+      </h2>
+
+      <p class="appText">
+        Gratitude can become much more meaningful when you have
+        something to guide your attention beyond the same few
+        things you usually write down.
+      </p>
+
+      <div class="appHighlight">
+        More ideas. More ways to notice. More moments that help
+        you reconnect with what is already good in your life.
+      </div>
+
+      <p class="appText">
+        The new app brings together a much larger collection of
+        gratitude prompts alongside practices designed to support
+        your mindset, wellbeing and everyday life — so you can
+        come back whenever you need a little inspiration, clarity
+        or a different perspective.
+      </p>
+
+      <a
+        class="ctaButton"
+        href="https://meroyoga.thrivecart.com/new-app-resource/?coupon=WAITLIST"
+        target="_blank"
+        rel="noopener"
+      >
+        Join the app waitlist
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       WHO AM I
+  ====================================================== -->
+
+  <section class="aboutSection">
+
+    <div class="aboutGrid">
+
+
+      <!-- PLACEHOLDER IMAGE -->
+
+      <img
+        class="aboutImage"
+        src="YOUR_ABOUT_IMAGE_URL_HERE"
+        alt="Placeholder image"
+      />
+
+
+      <div class="aboutContent">
+
+        <span class="sectionEyebrow">
+          A little about me
+        </span>
+
+        <h2 class="aboutName">
+          Who I am
+        </h2>
+
+        <p class="aboutText">
+          I'm a mindset coach and holistic health coach, and my
+          work is centred around helping women feel more connected
+          to themselves — not by becoming someone different, but
+          by creating more space to hear, understand and trust
+          what is already within them.
+        </p>
+
+        <p class="aboutText">
+          Over the years, I've explored the connection between
+          mindset, the nervous system, emotions, the body and
+          everyday wellbeing. That has shaped the way I create
+          practices: grounded, practical and compassionate, with
+          room for both the difficult moments and the good ones.
+        </p>
+
+        <p class="aboutText">
+          I created this gratitude resource because gratitude can
+          be much more than writing down three things you're
+          grateful for. It can become a way of changing what we
+          notice, creating space for appreciation and reconnecting
+          with parts of life that can easily disappear into the
+          background.
+        </p>
+
+        <div class="aboutClosing">
+          Sometimes a shift doesn't come from changing your whole
+          life. Sometimes it begins by noticing one small thing
+          that was already there.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FINAL SIGNUP
+  ====================================================== -->
+
+  <section class="finalSection">
+
+    <div class="finalInner">
+
+      <div class="sectionEyebrow">
+        Stay connected
+      </div>
+
+      <h2 class="finalTitle">
+        There's much more to come.
+      </h2>
+
+      <p class="finalText">
+        If this little glimpse has given you something to think
+        about, join the waitlist and be the first to hear when
+        the new app is ready.
+      </p>
+
+      <a
+        class="ctaButton"
+        href="https://meroyoga.thrivecart.com/new-app-resource/?coupon=WAITLIST"
+        target="_blank"
+        rel="noopener"
+      >
+        Join the waitlist
+      </a>
+
+      <div class="finalSmall">
+        You'll receive more information about the new app as it gets closer.
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="footer">
+    Gratitude is not about ignoring what is difficult.
+    It's about making space to notice what is here too.
+  </footer>
+
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   GRATITUDE PROMPTS
+=========================================================
+
+   THIS IS THE ONLY PLACE YOU NEED TO ADD YOUR 222 PROMPTS.
+
+   Replace the sample prompts below with your full collection.
+
+   Keep each prompt inside quotation marks and separated by
+   a comma.
+
+========================================================= */
+
+const gratitudePrompts = [
+
+  "What is one small thing in your everyday life that makes life a little easier, and how does it support you?",
+
+  "What is something about yourself that you have grown to appreciate more with time?",
+
+  "What is something ordinary you experienced today that you might have overlooked, but feel grateful for when you pause to notice it?",
+
+  "What is something your body allows you to experience, do or enjoy that you don't always stop to appreciate?",
+
+  "Think of something you have learned through life. What are you grateful that this experience taught you?"
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentPromptIndex = -1;
+
+
+/* =========================================================
+   OPEN PAGE 2
+========================================================= */
+
+function openPromptPage() {
+
+  const welcomePage = document.getElementById("welcomePage");
+  const promptPage = document.getElementById("promptPage");
+
+  welcomePage.classList.remove("active");
+
+  promptPage.classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "instant"
+  });
+
+}
+
+
+/* =========================================================
+   GET RANDOM PROMPT
+========================================================= */
+
+function getRandomPrompt() {
+
+  if (gratitudePrompts.length === 0) {
+    return "";
+  }
+
+
+  /*
+     If there is only one prompt, simply return it.
+  */
+
+  if (gratitudePrompts.length === 1) {
+    currentPromptIndex = 0;
+    return gratitudePrompts[0];
+  }
+
+
+  /*
+     Keep selecting until we get a different prompt.
+     This prevents an immediate repeat.
+  */
+
+  let randomIndex;
+
+  do {
+
+    randomIndex = Math.floor(
+      Math.random() * gratitudePrompts.length
+    );
+
+  } while (
+    randomIndex === currentPromptIndex
+  );
+
+
+  currentPromptIndex = randomIndex;
+
+  return gratitudePrompts[randomIndex];
+}
+
+
+/* =========================================================
+   SHOW FIRST PROMPT
+========================================================= */
+
+function showPrompt() {
+
+  const promptBox =
+    document.getElementById("promptBox");
+
+  const emptyPrompt =
+    document.getElementById("emptyPrompt");
+
+  const promptText =
+    document.getElementById("promptText");
+
+  const generateButton =
+    document.getElementById("generateButton");
+
+  const anotherButton =
+    document.getElementById("anotherButton");
+
+
+  const prompt = getRandomPrompt();
+
+
+  if (!prompt) {
+    return;
+  }
+
+
+  /*
+     Remove empty state.
+  */
+
+  promptBox.classList.remove("empty");
+
+  emptyPrompt.style.display = "none";
+
+  promptText.style.display = "block";
+
+
+  /*
+     Restart animation.
+
+     Removing and re-adding the class allows the animation
+     to play each time.
+  */
+
+  promptText.classList.remove("show");
+
+  void promptText.offsetWidth;
+
+  promptText.textContent = prompt;
+
+  promptText.classList.add("show");
+
+
+  /*
+     The original button remains, but changes purpose slightly.
+     The secondary button appears underneath.
+  */
+
+  generateButton.style.display = "none";
+
+  anotherButton.style.display = "block";
+
+}
+
+
+/* =========================================================
+   SHOW ANOTHER PROMPT
+========================================================= */
+
+function showAnotherPrompt() {
+
+  const promptText =
+    document.getElementById("promptText");
+
+
+  const prompt = getRandomPrompt();
+
+
+  if (!prompt) {
+    return;
+  }
+
+
+  /*
+     Fade/change the prompt smoothly.
+  */
+
+  promptText.classList.remove("show");
+
+  void promptText.offsetWidth;
+
+  promptText.textContent = prompt;
+
+  promptText.classList.add("show");
+
+}
+
+</script>
+
+</body>
+</html>
