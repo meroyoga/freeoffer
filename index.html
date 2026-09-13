@@ -357,61 +357,52 @@ button {
   background: var(--cream);
 }
 
- /* =========================
+   /*
+=========================
    FEATURE BOXES
-========================= */
+=========================
+*/
 
 .feature-grid {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto 42px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   gap: 20px;
 }
 
 .feature-box {
   overflow: hidden;
-
   background: var(--white);
-
   border: 1px solid var(--border);
   border-radius: 18px;
-
   text-align: left;
-
-  box-shadow: 0 7px 25px rgba(64,82,92,0.05);
+  box-shadow: 0 7px 25px rgba(97,64,81,0.08);
 }
 
 .feature-image {
   width: 100%;
   aspect-ratio: 16 / 9;
- 
-  background:
-    linear-gradient(
-      135deg,
-      var(--mauve-light);
-      var(--mauve)
-    );
+
+  /* GRATITUDE GENERATOR MAUVE */
+  background: linear-gradient(
+    135deg,
+    var(--mauve-light),
+    var(--mauve)
+  );
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: var(--white);
-
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  overflow: hidden;
 }
 
-  .feature-image img {
-
+.feature-image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-
+  display: block;
 }
 
 .feature-content {
@@ -420,20 +411,16 @@ button {
 
 .feature-box h3 {
   margin: 0 0 8px;
-
   font-family: "Playfair Display", serif;
   font-size: 22px;
   font-weight: 500;
-
   color: var(--text);
 }
 
 .feature-box p {
   margin: 0;
-
   font-size: 13px;
   line-height: 1.7;
-
   color: var(--text-light);
 }
 
