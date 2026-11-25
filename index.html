@@ -2114,7 +2114,14 @@ function showAnotherPrompt() {
     return;
   }
 
-
+/* GOATCOUNTER — ANOTHER PROMPT REQUESTED */
+if (window.goatcounter && window.goatcounter.count) {
+  window.goatcounter.count({
+    path: "another-prompt-requested",
+    title: "Another gratitude prompt requested",
+    event: true
+  });
+}
   /*
      Fade/change the prompt smoothly.
   */
