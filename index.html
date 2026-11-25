@@ -1957,6 +1957,15 @@ function openPromptPage() {
 
   promptPage.classList.add("active");
 
+   /* GOATCOUNTER */
+   if (window.goatcounter && window.goatcounter.count) {
+  window.goatcounter.count({
+    path: "open-prompt-generator",
+    title: "Prompt generator opened",
+    event: true
+  });
+}
+
   window.scrollTo({
     top: 0,
     behavior: "instant"
